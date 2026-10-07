@@ -352,7 +352,7 @@
       width: 100%; border: 1px solid var(--line); background: var(--paper); color: var(--ink);
       min-height: 48px; border-radius: 0; padding: 11px 12px;
     }
-    input[aria-invalid="true"] { border-color: var(--error); }
+    input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--error); }
     textarea { min-height: 126px; resize: vertical; }
     .field-error { min-height: 1.25em; margin: 0; color: var(--error); font-size: .78rem; line-height: 1.35; }
     .form-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
@@ -528,22 +528,22 @@
         </div>
         <form id="inquiry-form" novalidate>
           <div class="field">
-            <label for="name">Your name</label>
+            <label for="name">Your name *</label>
             <input id="name" name="name" autocomplete="name" aria-describedby="name-error" required>
             <p class="field-error" id="name-error" aria-live="polite"></p>
           </div>
-          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><p class="field-error" aria-hidden="true"></p></div>
+          <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" required><p class="field-error" id="email-error" aria-live="polite"></p></div>
           <div class="field">
-            <label for="phone">Phone number</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="phone-error" required>
+            <label for="phone">Phone number *</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" maxlength="12" aria-describedby="phone-error" required>
             <p class="field-error" id="phone-error" aria-live="polite"></p>
           </div>
-          <div class="field"><label for="type">Session type</label><select id="type" name="type" required><option value="">Choose one</option><option>Portraits</option><option>Wedding</option><option>Event</option><option>Family</option><option>Maternity</option><option>Graduation</option><option>Indoor session</option><option>Something else</option></select><p class="field-error" aria-hidden="true"></p></div>
-          <div class="field"><label for="date">Preferred date</label><input id="date" name="date" type="date" required><p class="field-error" aria-hidden="true"></p></div>
+          <div class="field"><label for="type">Session type *</label><select id="type" name="type" aria-describedby="type-error" required><option value="">Choose one</option><option>Portraits</option><option>Wedding</option><option>Event</option><option>Family</option><option>Maternity</option><option>Graduation</option><option>Indoor session</option><option>Something else</option></select><p class="field-error" id="type-error" aria-live="polite"></p></div>
+          <div class="field"><label for="date">Preferred date</label><input id="date" name="date" type="date"><p class="field-error" aria-hidden="true"></p></div>
           <div class="field">
             <label for="address">Address or venue</label>
-            <input id="address" name="address" autocomplete="street-address" placeholder="Street address, city, or venue" aria-describedby="address-error" required>
-            <p class="field-error" id="address-error" aria-live="polite"></p>
+            <input id="address" name="address" autocomplete="street-address" placeholder="Street address, city, or venue">
+            <p class="field-error" aria-hidden="true"></p>
           </div>
           <div class="field full"><label for="details">What should the photographer know?</label><textarea id="details" name="details" placeholder="Guest count, timing, the feeling you want, or any questions"></textarea></div>
           <div class="form-actions">
@@ -635,9 +635,11 @@
       var submitButton = document.getElementById('submit-button');
       var validationFields = {
         name: document.getElementById('name'),
+        email: document.getElementById('email'),
         phone: document.getElementById('phone'),
-        address: document.getElementById('address')
+        type: document.getElementById('type')
       };
+      var touchedFields = {};
 
       function showFieldError(fieldName, message) {
         var input = validationFields[fieldName];
@@ -646,41 +648,69 @@
         error.textContent = message;
       }
 
-      function validateNamedFields() {
-        var name = validationFields.name.value.trim();
-        var phone = validationFields.phone.value.trim();
-        var address = validationFields.address.value.trim();
-        var nameIsValid = name.length >= 2 && /^[\p{L}]+(?:[ '\u2019-][\p{L}]+)*$/u.test(name);
-        var phoneIsValid = /^[0-9\s()+-]+$/.test(phone) && (phone.match(/\d/g) || []).length >= 7;
-        var addressIsValid = address.length >= 5;
+      function formatUsPhone(value) {
+        var digits = value.replace(/\D/g, '').slice(0, 10);
+        if (digits.length <= 3) return digits;
+        if (digits.length <= 6) return digits.slice(0, 3) + '-' + digits.slice(3);
+        return digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6);
+      }
 
-        showFieldError('name', nameIsValid ? '' : 'Enter at least 2 characters using letters, spaces, hyphens, or apostrophes.');
-        showFieldError('phone', phoneIsValid ? '' : 'Enter a valid phone number with at least 7 digits.');
-        showFieldError('address', addressIsValid ? '' : 'Enter an address or venue with at least 5 characters.');
-        return nameIsValid && phoneIsValid && addressIsValid;
+      function getFieldError(fieldName) {
+        var field = validationFields[fieldName];
+        var value = field.value.trim();
+        if (fieldName === 'name') {
+          return value.length >= 2 && /^[\p{L}]+(?:[ '\u2019-][\p{L}]+)*$/u.test(value)
+            ? ''
+            : 'Enter at least 2 characters using letters, spaces, hyphens, or apostrophes.';
+        }
+        if (fieldName === 'email') {
+          if (!value) return 'Enter your email address.';
+          return field.validity.typeMismatch ? 'Enter a valid email address.' : '';
+        }
+        if (fieldName === 'phone') {
+          return value.replace(/\D/g, '').length === 10 ? '' : 'Enter a 10-digit US phone number.';
+        }
+        if (fieldName === 'type') return value ? '' : 'Choose a session type.';
+        return '';
+      }
+
+      function validateField(fieldName) {
+        var message = getFieldError(fieldName);
+        showFieldError(fieldName, message);
+        return !message;
       }
 
       Object.keys(validationFields).forEach(function (fieldName) {
-        validationFields[fieldName].addEventListener('input', function () {
-          if (validationFields[fieldName].getAttribute('aria-invalid') === 'true') validateNamedFields();
+        var field = validationFields[fieldName];
+        field.addEventListener('focus', function () {
+          touchedFields[fieldName] = true;
         });
-        validationFields[fieldName].addEventListener('blur', validateNamedFields);
+        field.addEventListener('input', function () {
+          if (fieldName === 'phone') field.value = formatUsPhone(field.value);
+          showFieldError(fieldName, '');
+        });
+        field.addEventListener('blur', function () {
+          if (touchedFields[fieldName]) validateField(fieldName);
+        });
       });
+
+      function validateAllFields() {
+        var allValid = true;
+        Object.keys(validationFields).forEach(function (fieldName) {
+          touchedFields[fieldName] = true;
+          if (!validateField(fieldName)) allValid = false;
+        });
+        return allValid;
+      }
 
       form.addEventListener('submit', function (event) {
         event.preventDefault();
         result.className = 'result';
         resultMessage.textContent = '';
 
-        var namedFieldsAreValid = validateNamedFields();
-        if (!namedFieldsAreValid) {
+        if (!validateAllFields()) {
           var firstInvalid = form.querySelector('[aria-invalid="true"]');
           if (firstInvalid) firstInvalid.focus();
-          return;
-        }
-
-        if (!form.checkValidity()) {
-          form.reportValidity();
           return;
         }
 
@@ -703,6 +733,7 @@
           });
         }).then(function () {
           form.reset();
+          touchedFields = {};
           Object.keys(validationFields).forEach(function (fieldName) { showFieldError(fieldName, ''); });
           result.className = 'result is-visible is-success';
           resultMessage.textContent = 'Thank you. Your inquiry has been sent to AD Photography. I’ll be in touch soon.';
