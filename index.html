@@ -27,7 +27,10 @@
       --error: #8f1f1f;
       --success: #245e3d;
       --hero-fade: #e2e3e1;
-      --services-bg: #e5e5e2;
+      --services-bg: #f3f3f1;
+      --services-ink: #171717;
+      --services-muted: #565653;
+      --services-line: #ccccca;
       --gallery-bg: #f5f5f3;
       --story-bg: #d9dad7;
       --team-bg: #e7e8e5;
@@ -50,7 +53,10 @@
         --error: #ffaaa1;
         --success: #9ee2b8;
         --hero-fade: #242524;
-        --services-bg: #242424;
+        --services-bg: #f3f3f1;
+        --services-ink: #171717;
+        --services-muted: #565653;
+        --services-line: #ccccca;
         --gallery-bg: #181818;
         --story-bg: #2d2e2d;
         --team-bg: #262726;
@@ -217,22 +223,22 @@
     .services {
       position: relative;
       background: linear-gradient(to bottom, var(--hero-fade) 0, var(--services-bg) 74px, var(--services-bg) calc(100% - 74px), var(--gallery-bg) 100%);
-      color: var(--ink);
+      color: var(--services-ink);
     }
     .services .section-wrap { padding-top: 134px; padding-bottom: 134px; }
-    .services .section-head p { color: var(--muted); }
-    .service-list { border-top: 1px solid var(--line); }
+    .services .section-head p { color: var(--services-muted); }
+    .service-list { border-top: 1px solid var(--services-line); }
     .service-item {
       display: grid;
       grid-template-columns: 70px minmax(190px, .7fr) 1fr;
       gap: 24px;
       padding: 26px 0;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--services-line);
       align-items: baseline;
     }
-    .service-item .num { color: var(--muted); font-size: .78rem; font-weight: 600; }
+    .service-item .num { color: var(--services-muted); font-size: .78rem; font-weight: 600; }
     .service-item h3 { font-size: clamp(1.85rem, 3vw, 2.8rem); margin: 0; }
-    .service-item p { margin: 0; color: var(--muted); max-width: 600px; }
+    .service-item p { margin: 0; color: var(--services-muted); max-width: 600px; }
 
     .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: -10px 0 40px; }
     .filter-btn { border: 1px solid var(--line); background: transparent; color: var(--ink); padding: 10px 15px; cursor: pointer; }
