@@ -64,6 +64,7 @@
       --services-line: #ccccca;
       --gallery-bg: #f5f5f3;
       --story-bg: #d9dad7;
+      --pricing-bg: #fbfbfa;
       --team-bg: #e7e8e5;
       --booking-bg: #ededeb;
       --footer-bg: #cfd0cd;
@@ -90,6 +91,7 @@
         --services-line: #ccccca;
         --gallery-bg: #181818;
         --story-bg: #2d2e2d;
+        --pricing-bg: #141414;
         --team-bg: #262726;
         --booking-bg: #202120;
         --footer-bg: #30312f;
@@ -321,7 +323,7 @@
     .gallery-item.seattle-main .photo-frame img { object-position: center 43%; }
 
     #work {
-      background: linear-gradient(to bottom, var(--gallery-bg) 0%, var(--gallery-bg) calc(100% - 84px), var(--team-bg) 100%);
+      background: linear-gradient(to bottom, var(--gallery-bg) 0%, var(--gallery-bg) calc(100% - 84px), var(--pricing-bg) 100%);
     }
     .story {
       background: linear-gradient(to bottom, var(--story-bg) 0%, var(--story-bg) calc(100% - 84px), var(--team-bg) 100%);
@@ -333,6 +335,32 @@
     .story-copy h2 { font-size: clamp(3.2rem, 5.5vw, 5.7rem); line-height: .9; letter-spacing: -.04em; margin: 0; }
     .story-copy > p { color: var(--muted); font-size: 1.06rem; margin: 26px 0; }
     .story-promise { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--ink); font-family: "Bodoni Moda", serif; font-size: 1.55rem; line-height: 1.25; }
+
+    .pricing {
+      background: linear-gradient(to bottom, var(--pricing-bg) 0%, var(--pricing-bg) calc(100% - 84px), var(--team-bg) 100%);
+    }
+    .price-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .price-item {
+      display: grid;
+      grid-template-columns: minmax(170px, .8fr) minmax(170px, .7fr) 1.4fr auto;
+      gap: 10px 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .price-item h3 { font-size: clamp(1.55rem, 2.4vw, 2.1rem); margin: 0; }
+    .price-range { margin: 0; font-family: "Bodoni Moda", serif; font-size: clamp(1.25rem, 1.9vw, 1.6rem); white-space: nowrap; }
+    .price-range small { display: block; font-family: "Albert Sans", sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .price-detail { margin: 0; color: var(--muted); font-size: .95rem; }
+    .price-detail ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+    .price-link { font-size: .85rem; font-weight: 600; white-space: nowrap; text-underline-offset: 4px; }
+    .pricing-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 46px; }
+    .pricing-note { border-top: 2px solid var(--ink); padding-top: 16px; }
+    .pricing-note h3 { font-family: "Albert Sans", sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 12px; }
+    .pricing-note p, .pricing-note li { color: var(--muted); font-size: .95rem; margin: 0; }
+    .pricing-note p + p { margin-top: 8px; }
+    .pricing-note ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .pricing-note li strong { color: var(--ink); font-weight: 600; }
 
     .team {
       background: linear-gradient(to bottom, var(--team-bg) 0%, var(--team-bg) calc(100% - 84px), var(--booking-bg) 100%);
@@ -424,6 +452,11 @@
       .story-grid, .booking-grid { grid-template-columns: 1fr; }
       .story-image { min-height: 560px; }
       .team-layout { grid-template-columns: 1fr; }
+      .price-item { grid-template-columns: 1fr auto; }
+      .price-item .price-detail { grid-column: 1 / -1; }
+      .price-item .price-detail:empty { display: none; }
+      .price-item .price-link { grid-column: 1 / -1; }
+      .pricing-notes { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .site-nav { width: calc(100% - 28px); min-height: 64px; overflow: hidden; }
@@ -469,6 +502,7 @@
     <ul>
       <li><a href="#work">Work</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#team">Team</a></li>
       <li><a class="nav-cta" href="#book">Book a session</a></li>
     </ul>
@@ -542,6 +576,79 @@
           <article class="gallery-item wide" data-category="events"><button class="placeholder" type="button" data-label="Events · atmosphere" aria-label="Event photograph coming soon"><span>3:2</span><span class="view-label">Coming soon</span></button></article>
           <article class="gallery-item" data-category="graduation"><button class="placeholder" type="button" data-label="Graduation · milestone" aria-label="Graduation photograph coming soon"><span>4:5</span><span class="view-label">Coming soon</span></button></article>
           <article class="gallery-item" data-category="indoor"><button class="placeholder" type="button" data-label="Indoor · composed light" aria-label="Indoor photograph coming soon"><span>4:5</span><span class="view-label">Coming soon</span></button></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+      <div class="section-wrap">
+        <div class="section-head">
+          <h2 id="pricing-title">Pricing</h2>
+          <p>Prices are shown as ranges. Your final quote depends on session length, location and travel, and what’s included.</p>
+        </div>
+        <ul class="price-list">
+          <li class="price-item">
+            <h3>Portraits</h3>
+            <p class="price-range"><small>From</small>$200 to $350</p>
+            <span class="price-detail" aria-hidden="true"></span>
+            <a class="price-link" href="#book" data-session-type="Portraits" aria-label="Request a date for portraits">Request a date</a>
+          </li>
+          <li class="price-item">
+            <h3>Weddings</h3>
+            <p class="price-range"><small>From</small>$1,500 to $3,900</p>
+            <div class="price-detail"><ul><li>Intimate: $1,500 for small weddings</li><li>Classic: $3,200</li><li>Signature: $3,900</li><li>Extra coverage: $250 per hour</li></ul></div>
+            <a class="price-link" href="#book" data-session-type="Wedding" aria-label="Request a date for weddings">Request a date</a>
+          </li>
+          <li class="price-item">
+            <h3>Events</h3>
+            <p class="price-range"><small>From</small>$500 to $750</p>
+            <div class="price-detail"><ul><li>$500 for 3 to 4 hours</li><li>$750 for up to 6 hours</li><li>Extra time: $100 per hour</li></ul></div>
+            <a class="price-link" href="#book" data-session-type="Event" aria-label="Request a date for events">Request a date</a>
+          </li>
+          <li class="price-item">
+            <h3>Family</h3>
+            <p class="price-range"><small>From</small>$275 to $350</p>
+            <span class="price-detail" aria-hidden="true"></span>
+            <a class="price-link" href="#book" data-session-type="Family" aria-label="Request a date for family">Request a date</a>
+          </li>
+          <li class="price-item">
+            <h3>Maternity</h3>
+            <p class="price-range"><small>From</small>$250 to $375</p>
+            <span class="price-detail" aria-hidden="true"></span>
+            <a class="price-link" href="#book" data-session-type="Maternity" aria-label="Request a date for maternity">Request a date</a>
+          </li>
+          <li class="price-item">
+            <h3>Graduation</h3>
+            <p class="price-range"><small>From</small>$175 to $325</p>
+            <span class="price-detail" aria-hidden="true"></span>
+            <a class="price-link" href="#book" data-session-type="Graduation" aria-label="Request a date for graduation">Request a date</a>
+          </li>
+          <li class="price-item">
+            <h3>Indoor and studio</h3>
+            <p class="price-range"><small>From</small>$200 to $350</p>
+            <span class="price-detail" aria-hidden="true"></span>
+            <a class="price-link" href="#book" data-session-type="Indoor session" aria-label="Request a date for indoor and studio">Request a date</a>
+          </li>
+        </ul>
+        <div class="pricing-notes">
+          <div class="pricing-note">
+            <h3>Every package includes</h3>
+            <p>A private online gallery with high resolution downloads.</p>
+          </div>
+          <div class="pricing-note">
+            <h3>Booking</h3>
+            <p>A retainer books your date. The balance is due on session day.</p>
+            <p>Washington sales tax applies.</p>
+          </div>
+          <div class="pricing-note">
+            <h3>Travel</h3>
+            <ul>
+              <li><strong>Up to about 30 minutes from Kent:</strong> travel included</li>
+              <li><strong>30 to 60 minutes away:</strong> flat $50 fee, waived on Signature packages</li>
+              <li><strong>Over an hour away:</strong> flat $100 fee, Signature level minimum</li>
+              <li><strong>Far weddings and full day events:</strong> quoted case by case</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -647,6 +754,16 @@
           items.forEach(function (item) {
             item.hidden = filter !== 'all' && item.getAttribute('data-category') !== filter;
           });
+        });
+      });
+
+      var typeSelect = document.getElementById('type');
+      document.querySelectorAll('[data-session-type]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          typeSelect.value = link.getAttribute('data-session-type');
+          typeSelect.setAttribute('aria-invalid', 'false');
+          var typeError = document.getElementById('type-error');
+          if (typeError) typeError.textContent = '';
         });
       });
 
