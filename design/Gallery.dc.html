@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gallery</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="container-type: inline-size; width: 100%; background: #F6F2EC; color: #1D1B18; font-family: 'Albert Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+
+<dc-import name="Nav" mobile="{{isMobile}}" active="gallery" hint-size="100%,80px"></dc-import>
+
+<section aria-labelledby="gallery-title" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6cqw, 88px) clamp(20px, 4cqw, 40px) clamp(56px, 6cqw, 96px);">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; margin-bottom: 28px;">
+<div style="flex: 1 1 420px;">
+<p style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #8E4A2B;">Gallery</p>
+<h1 id="gallery-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(48px, 6.4cqw, 92px); line-height: .95; letter-spacing: -.01em;">Selected work</h1>
+</div>
+<p style="flex: 1 1 320px; max-width: 420px; margin: 0; color: #5E5850;">A spacious, editorial gallery organized by the moments you want remembered. Select any frame for a closer view.</p>
+</div>
+
+<div role="group" aria-label="Filter by category" style="display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; margin-bottom: 24px; border-top: 1px solid #E2DAD0; border-bottom: 1px solid #E2DAD0;">
+<button type="button" aria-pressed="true" style="flex: none; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #1D1B18; background: #1D1B18; color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600;">All</button>
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="7">
+<button type="button" aria-pressed="false" style="flex: none; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #CFC5B8; background: transparent; color: #1D1B18; font: inherit; font-size: 14px; font-weight: 500;">{{f}}</button>
+</sc-for>
+</div>
+
+<div style="columns: 3 160px; column-gap: clamp(12px, 1.4cqw, 20px);">
+<sc-for list="{{photos}}" as="p" hint-placeholder-count="11">
+<figure style="margin: 0 0 clamp(12px, 1.4cqw, 20px); break-inside: avoid;">
+<img src="{{p.src}}" alt="{{p.alt}}" style="display: block; width: 100%; height: auto; border-radius: 14px;">
+<figcaption style="margin-top: 8px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #5E5850;">{{p.caption}}</figcaption>
+</figure>
+</sc-for>
+<sc-for list="{{coming}}" as="c" hint-placeholder-count="5">
+<div style="margin: 0 0 clamp(12px, 1.4cqw, 20px); break-inside: avoid; aspect-ratio: 4 / 5; border-radius: 14px; border: 1.5px dashed #B9AD9E; background: #EAE3D9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: 16px; box-sizing: border-box;">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px;">{{c}}</span>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #5E5850;">Placeholder: photos coming soon</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="cta-title" style="background: #1D1B18; color: #F6F2EC;">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 6cqw, 88px) clamp(20px, 4cqw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px;">
+<div style="flex: 1 1 420px;">
+<h2 id="cta-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.4cqw, 60px); line-height: 1;">Tell me what you’re planning.</h2>
+<p style="margin: 14px 0 0; color: #D9D0C4;">Share the date, place and a few details.</p>
+</div>
+<a href="{{bookHref}}" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: 999px; background: #F6F2EC; color: #1D1B18; text-decoration: none; font-weight: 600;">Request a date</a>
+</div>
+</section>
+
+<dc-import name="Footer" mobile="{{isMobile}}" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mobile":{"editor":null,"tsType":"boolean"},"$preview":{"width":1440,"height":4400}}'>
+class Component extends DCLogic {
+renderVals() {
+const m = this.props.mobile === true;
+return {
+isMobile: m,
+bookHref: (m ? 'MobileBook' : 'Book') + '.dc.html',
+filters: ['Portraits', 'Weddings', 'Events', 'Family', 'Maternity', 'Graduation', 'Indoor'],
+photos: [
+{ src: '/_blob/2d243938ebd21f2536ad5c8b0736dc1d', alt: 'Outdoor maternity portrait in warm light', caption: 'Maternity · portrait 05' },
+{ src: '/_blob/e2f311d66acbfa030b37709235eb642f', alt: 'Black and white baby portrait', caption: 'Portraits · quiet wonder' },
+{ src: '/_blob/f49ee64bc5b217b2f9b3c8eb2e4dd490', alt: 'Couple maternity portrait', caption: 'Maternity · portrait 02' },
+{ src: '/_blob/51778e7b33797b227354f457c160bd22', alt: 'Smiling baby portrait', caption: 'Portraits · bright joy' },
+{ src: '/_blob/6f6ff46c79d2dad9f84d6fb02b89cc13', alt: 'Outdoor maternity portrait', caption: 'Maternity · portrait 01' },
+{ src: '/_blob/800d6c6e6be007dc79df985dd66f9ed6', alt: 'Black and white baby portrait in a landscape frame', caption: 'Portraits · little details' },
+{ src: '/_blob/8b4384e3b4939db15152f25bea4d0ab8', alt: 'Maternity portrait in a red dress', caption: 'Maternity · portrait 04' },
+{ src: '/_blob/4d3c851cef5c350b3d80b61b783b721f', alt: 'Outdoor maternity portrait by the water', caption: 'Maternity · portrait 03' },
+{ src: '/_blob/5d5626b5ccfb0a2847cb858aad623000', alt: 'Color baby portrait', caption: 'Portraits · in color' },
+{ src: '/_blob/ab03380999ee1041c801b3689d667dbe', alt: 'Black and white maternity portrait', caption: 'Maternity · portrait 07' },
+{ src: '/_blob/ee725b7e015129cd5c397e3ab6f349b9', alt: 'Photographer holding his camera', caption: 'Behind the camera' }
+],
+coming: ['Weddings', 'Family', 'Events', 'Graduation', 'Indoor']
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="container-type: inline-size; width: 100%; background: #F6F2EC; color: #1D1B18; font-family: 'Albert Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+
+<dc-import name="Nav" mobile="{{isMobile}}" active="home" hint-size="100%,80px"></dc-import>
+
+<section aria-label="Introduction" style="position: relative; height: clamp(460px, 40cqw, 600px); overflow: hidden; background: #2B2622;">
+<img src="/_blob/32428bbaa4f305236534afb39d8da51f" alt="Couple maternity portrait outdoors" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%;">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,17,14,.82) 0%, rgba(20,17,14,.40) 50%, rgba(20,17,14,.08) 80%);"></div>
+<p style="position: absolute; top: 16px; right: 16px; margin: 0; padding: 6px 12px; border-radius: 999px; background: rgba(246,242,236,.94); color: #1D1B18; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;">Placeholder: your client photo</p>
+<div style="position: absolute; inset: auto 0 0 0; max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 4cqw, 40px) clamp(32px, 5cqw, 72px); color: #FFFFFF;">
+<p style="margin: 0 0 16px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.9);">Portraits · celebrations · real connection</p>
+<h1 style="margin: 0; max-width: 860px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(46px, 7cqw, 100px); line-height: .95; letter-spacing: -.02em;">Keep the feeling, <em style="font-style: italic;">not just the pose.</em></h1>
+<p style="margin: 18px 0 0; max-width: 540px; font-size: clamp(16px, 1.4cqw, 19px); color: rgba(255,255,255,.92);">Portrait, wedding and event photography in Kent and Seattle, WA.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px;">
+<a href="{{galleryHref}}" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #FFFFFF; color: #1D1B18; text-decoration: none; font-weight: 600;">View the gallery</a>
+<a href="{{bookHref}}" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 1px solid rgba(255,255,255,.7); color: #FFFFFF; text-decoration: none; font-weight: 600;">Book a session</a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="work-title" style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 6cqw, 96px) clamp(20px, 4cqw, 40px);">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; margin-bottom: 24px;">
+<div style="flex: 1 1 420px;">
+<p style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #8E4A2B;">Portfolio</p>
+<h2 id="work-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 5cqw, 68px); line-height: 1;">Selected work</h2>
+</div>
+<a href="{{galleryHref}}" style="display: inline-flex; align-items: center; min-height: 44px; color: #1D1B18; font-weight: 600;">See the full gallery</a>
+</div>
+<div role="group" aria-label="Browse by category" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px;">
+<a href="{{galleryHref}}" aria-current="true" style="flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: #1D1B18; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600;">All</a>
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="7">
+<a href="{{galleryHref}}" style="flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #CFC5B8; color: #1D1B18; text-decoration: none; font-size: 14px; font-weight: 500;">{{f}}</a>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 45%), 1fr)); grid-auto-rows: clamp(130px, 18cqw, 250px); grid-auto-flow: dense; gap: clamp(10px, 1.2cqw, 16px);">
+<img src="/_blob/2d243938ebd21f2536ad5c8b0736dc1d" alt="Outdoor maternity portrait in warm light" style="grid-column: span 2; grid-row: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+<img src="/_blob/51778e7b33797b227354f457c160bd22" alt="Smiling baby portrait" style="grid-row: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+<img src="/_blob/f49ee64bc5b217b2f9b3c8eb2e4dd490" alt="Couple maternity portrait" style="grid-row: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+<img src="/_blob/800d6c6e6be007dc79df985dd66f9ed6" alt="Black and white baby portrait in a landscape frame" style="grid-column: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+<img src="/_blob/8b4384e3b4939db15152f25bea4d0ab8" alt="Maternity portrait in a red dress" style="grid-row: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+<img src="/_blob/e2f311d66acbfa030b37709235eb642f" alt="Black and white baby portrait" style="grid-row: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+<img src="/_blob/4d3c851cef5c350b3d80b61b783b721f" alt="Outdoor maternity portrait by the water" style="grid-row: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+<img src="/_blob/ab03380999ee1041c801b3689d667dbe" alt="Black and white maternity portrait" style="grid-row: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+</div>
+</section>
+
+<section aria-labelledby="services-title" style="background: #EFE9E1;">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 6cqw, 96px) clamp(20px, 4cqw, 40px);">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; margin-bottom: 32px;">
+<h2 id="services-title" style="flex: 1 1 420px; margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.4cqw, 60px); line-height: 1;">Every chapter deserves its own frame.</h2>
+<a href="{{pricingHref}}" style="display: inline-flex; align-items: center; min-height: 44px; color: #1D1B18; font-weight: 600;">See pricing</a>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 40px; border-top: 1px solid #D9CFC2;">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="7">
+<li style="display: flex; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid #D9CFC2;">
+<span style="flex: none; width: 28px; font-size: 13px; font-weight: 600; color: #5E5850;">{{s.num}}</span>
+<div><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1.1;">{{s.name}}</p><p style="margin: 4px 0 0; font-size: 15px; color: #5E5850;">{{s.desc}}</p></div>
+</li>
+</sc-for>
+</ul>
+</div>
+</section>
+
+<section aria-labelledby="team-title" style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 6cqw, 96px) clamp(20px, 4cqw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 32px clamp(40px, 6cqw, 88px);">
+<img src="/_blob/94589e3bffb73e80c946441f7c0bdca2" alt="Ashim Dahal and Sneha Malla together on a beach swing" style="flex: 1 1 300px; min-width: 0; max-width: 480px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 24px;">
+<div style="flex: 1 1 340px;">
+<p style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #8E4A2B;">Meet your photographer and editor</p>
+<h2 id="team-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.4cqw, 60px); line-height: 1;">Two perspectives, one thoughtful finish.</h2>
+<p style="margin: 20px 0 24px; color: #5E5850; font-size: 17px;">Ashim Dahal photographs. Sneha Malla edits. Together they shape a calm session and a consistent, warm final gallery.</p>
+<a href="{{aboutHref}}" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border-radius: 999px; border: 1px solid #1D1B18; color: #1D1B18; text-decoration: none; font-weight: 600;">About us</a>
+</div>
+</section>
+
+<section aria-labelledby="cta-title" style="background: #1D1B18; color: #F6F2EC;">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 6cqw, 88px) clamp(20px, 4cqw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px;">
+<div style="flex: 1 1 420px;">
+<h2 id="cta-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.4cqw, 60px); line-height: 1;">Tell me what you’re planning.</h2>
+<p style="margin: 14px 0 0; color: #D9D0C4;">Share the date, place and a few details.</p>
+</div>
+<a href="{{bookHref}}" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: 999px; background: #F6F2EC; color: #1D1B18; text-decoration: none; font-weight: 600;">Request a date</a>
+</div>
+</section>
+
+<dc-import name="Footer" mobile="{{isMobile}}" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mobile":{"editor":null,"tsType":"boolean"},"$preview":{"width":1440,"height":5000}}'>
+class Component extends DCLogic {
+renderVals() {
+const m = this.props.mobile === true;
+const href = (page) => (m ? 'Mobile' + page : (page === 'Home' ? 'Main' : page)) + '.dc.html';
+return {
+isMobile: m,
+galleryHref: href('Gallery'),
+pricingHref: href('Pricing'),
+aboutHref: href('About'),
+bookHref: href('Book'),
+filters: ['Portraits', 'Weddings', 'Events', 'Family', 'Maternity', 'Graduation', 'Indoor'],
+services: [
+{ num: '01', name: 'Portraits', desc: 'Personal, professional and creative portraits with calm direction.' },
+{ num: '02', name: 'Weddings', desc: 'The ceremony, the people and the in-between moments.' },
+{ num: '03', name: 'Events', desc: 'Atmosphere, details and candid connection.' },
+{ num: '04', name: 'Family', desc: 'Relaxed sessions centered on personality and closeness.' },
+{ num: '05', name: 'Maternity', desc: 'Comfortable portraits that celebrate anticipation.' },
+{ num: '06', name: 'Graduation', desc: 'The work, joy and people behind a major milestone.' },
+{ num: '07', name: 'Indoor', desc: 'Intentional light and composition, made indoors.' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Footer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<footer style="width: 100%; background: #141210; color: #D9D0C4; font-family: 'Albert Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.6;">
+<div style="max-width: 1240px; margin: 0 auto; padding: 56px 20px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 48px;">
+<div style="flex: 1 1 300px; max-width: 460px;">
+<img src="/_blob/7ff173fae1e49c27e67530eb48820df7" alt="AD Photography" style="width: 150px; height: auto; display: block;">
+<p style="margin: 20px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; line-height: 1.15; color: #F6F2EC;">Your people. Your season. Remembered with intention.</p>
+</div>
+<div style="flex: 0 1 160px;">
+<p style="margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;">Explore</p>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+<sc-for list="{{links}}" as="l" hint-placeholder-count="5">
+<li><a href="{{l.href}}" style="color: #F6F2EC; text-decoration: none;">{{l.label}}</a></li>
+</sc-for>
+</ul>
+</div>
+<div style="flex: 0 1 260px;">
+<p style="margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;">Contact</p>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+<li><a href="mailto:adphotograph26@gmail.com" style="color: #F6F2EC; text-decoration: none;">adphotograph26@gmail.com</a></li>
+<li><a href="tel:+12242292201" style="color: #F6F2EC; text-decoration: none;">224-229-2201</a></li>
+<li><a href="https://www.instagram.com/ashimd_photography/" style="color: #F6F2EC; text-decoration: none;">Instagram @ashimd_photography</a></li>
+<li><a href="https://www.facebook.com/ad.photopraphy" style="color: #F6F2EC; text-decoration: none;">Facebook</a></li>
+</ul>
+</div>
+</div>
+<div style="max-width: 1240px; margin: 0 auto; padding: 20px 20px 32px; box-sizing: border-box; border-top: 1px solid #2E2A26; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 13px;">
+<span>Based in Kent, WA · Serving Kent, Seattle and nearby</span>
+<span>Portraits · Weddings · Events · Family · Maternity · Graduation · Indoor</span>
+<span>© 2026 AD Photography</span>
+</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mobile":{"editor":null,"tsType":"boolean"},"$preview":{"width":1440,"height":340}}'>
+class Component extends DCLogic {
+renderVals() {
+const m = this.props.mobile === true;
+const href = (page) => (m ? 'Mobile' + page : (page === 'Home' ? 'Main' : page)) + '.dc.html';
+return {
+links: [
+{ label: 'Home', href: href('Home') },
+{ label: 'Gallery', href: href('Gallery') },
+{ label: 'Pricing', href: href('Pricing') },
+{ label: 'About', href: href('About') },
+{ label: 'Contact and booking', href: href('Book') }
+]
+};
+}
+}
+</script>
+</body>
+</html>

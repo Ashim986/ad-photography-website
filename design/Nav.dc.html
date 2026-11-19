@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Top menu</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<header style="width: 100%; background: #F6F2EC; color: #1D1B18; font-family: 'Albert Sans', system-ui, sans-serif; border-bottom: 1px solid #E2DAD0;">
+<sc-if value="{{isDesktop}}" hint-placeholder-val="{{ true }}">
+<nav aria-label="Main" style="max-width: 1240px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+<a href="{{homeHref}}" style="display: flex; flex-direction: column; color: #1D1B18; text-decoration: none; line-height: 1.1;">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 28px;">AD Photography</span>
+<span style="font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #5E5850;">Kent · Seattle, WA</span>
+</a>
+<div style="display: flex; align-items: center; gap: 36px;">
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; font-size: 15px; font-weight: 500;">
+<sc-for list="{{links}}" as="l" hint-placeholder-count="5">
+<li><sc-if value="{{l.isActive}}" hint-placeholder-val="{{ false }}"><a href="{{l.href}}" aria-current="page" style="flex: none; display: inline-flex; align-items: center; min-height: 44px; color: #1D1B18; text-decoration: none; border-bottom: 2px solid #8E4A2B;">{{l.label}}</a></sc-if><sc-if value="{{l.notActive}}" hint-placeholder-val="{{ true }}"><a href="{{l.href}}" style="flex: none; display: inline-flex; align-items: center; min-height: 44px; color: #1D1B18; text-decoration: none; border-bottom: 2px solid transparent;">{{l.label}}</a></sc-if></li>
+</sc-for>
+</ul>
+<a href="{{bookHref}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: #8E4A2B; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px;">Book a session</a>
+</div>
+</nav>
+</sc-if>
+<sc-if value="{{isMobile}}" hint-placeholder-val="{{ false }}">
+<nav aria-label="Main" style="padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+<a href="{{homeHref}}" style="display: flex; flex-direction: column; color: #1D1B18; text-decoration: none; line-height: 1.1;">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 24px;">AD Photography</span>
+<span style="font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #5E5850;">Kent · Seattle, WA</span>
+</a>
+<div style="display: flex; align-items: center; gap: 8px;">
+<a href="{{bookHref}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: #8E4A2B; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 14px;">Book</a>
+<button type="button" aria-label="Open menu" style="width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #CFC5B8; border-radius: 999px; background: transparent; color: #1D1B18;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div>
+</nav>
+<div style="display: flex; gap: 22px; overflow-x: auto; padding: 0 20px 12px; font-size: 14px; font-weight: 500;">
+<sc-for list="{{links}}" as="l" hint-placeholder-count="5">
+<sc-if value="{{l.isActive}}" hint-placeholder-val="{{ false }}"><a href="{{l.href}}" aria-current="page" style="flex: none; display: inline-flex; align-items: center; min-height: 44px; color: #1D1B18; text-decoration: none; border-bottom: 2px solid #8E4A2B;">{{l.label}}</a></sc-if><sc-if value="{{l.notActive}}" hint-placeholder-val="{{ true }}"><a href="{{l.href}}" style="flex: none; display: inline-flex; align-items: center; min-height: 44px; color: #1D1B18; text-decoration: none; border-bottom: 2px solid transparent;">{{l.label}}</a></sc-if>
+</sc-for>
+</div>
+</sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mobile":{"editor":null,"tsType":"boolean"},"active":{"editor":"enum","options":["home","gallery","pricing","about","book"],"default":"home"},"$preview":{"width":1440,"height":80}}'>
+class Component extends DCLogic {
+renderVals() {
+const m = this.props.mobile === true;
+const active = this.props.active ?? 'home';
+const href = (page) => (m ? 'Mobile' + page : (page === 'Home' ? 'Main' : page)) + '.dc.html';
+const pages = [
+{ id: 'home', label: 'Home', page: 'Home' },
+{ id: 'gallery', label: 'Gallery', page: 'Gallery' },
+{ id: 'pricing', label: 'Pricing', page: 'Pricing' },
+{ id: 'about', label: 'About', page: 'About' },
+{ id: 'book', label: 'Contact', page: 'Book' }
+];
+const links = pages.map((p) => ({
+label: p.label,
+href: href(p.page),
+isActive: p.id === active,
+notActive: p.id !== active
+}));
+return { isMobile: m, isDesktop: !m, links, homeHref: href('Home'), bookHref: href('Book') };
+}
+}
+</script>
+</body>
+</html>

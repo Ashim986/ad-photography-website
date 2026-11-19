@@ -2,21 +2,33 @@
 
 Portfolio and booking website for AD Photography (Ashim Dahal), live at https://adlightstudio.com.
 
-- Static site in the `site/` folder: `index.html`, compressed photos in `site/images/`, favicons, link preview image (`og-image.jpg`), `sitemap.xml` and `robots.txt`.
-- Hosted on Cloudflare (project "adlightstudio") by direct upload. Pushing to GitHub does not deploy.
-- Booking inquiries are sent by email through Web3Forms. A hidden spam trap field drops bot submissions.
+- Static site in the `site/` folder. Five pages, each in its own folder so the addresses stay short:
+  - `index.html` Home (`/`)
+  - `gallery/index.html` Gallery (`/gallery/`)
+  - `pricing/index.html` Pricing (`/pricing/`)
+  - `about/index.html` About (`/about/`)
+  - `contact/index.html` Contact and booking (`/contact/`)
+- Shared files: `assets/site.css` (all styles) and `assets/site.js` (phone menu, gallery filters and rows, photo viewer, booking form). Photos are WebP files in `images/`.
+- Favicons, link preview image (`og-image.jpg`), `sitemap.xml` and `robots.txt` sit at the top of `site/`.
+- Booking inquiries are sent by email through Web3Forms. A hidden spam trap box drops bot submissions.
+- Old links like `adlightstudio.com/#booking` or `/#pricing` forward to the new pages.
+- `design/` holds the approved design source. See `design/README.md`.
 
 ## Deploy
 
-1. In the Cloudflare dashboard, open the "adlightstudio" project and create a new deployment.
-2. Upload the whole `site/` folder (drag the folder, or a zip of its contents). The custom domain stays attached.
-3. Open https://adlightstudio.com and check the gallery and the booking form.
+Hosted on Cloudflare (project "adlightstudio"). Pushing to GitHub does not deploy on its own.
 
-Fallback: `single-file/index.html` is a one-file copy with every photo embedded (about 2.8 MB). It works with the old "upload just index.html" flow, but it loads slower, and the link preview image and sitemap need the folder upload. Rebuild it after changes with `python3 tools/build_single_file.py`.
+By hand:
 
-## Add or replace a gallery photo
+1. In the Cloudflare dashboard, open Workers & Pages, then the "adlightstudio" project, then Create deployment.
+2. Upload the whole `site/` folder (drag the folder, or a zip of what is inside it). The `site/` folder itself must be the top, so `index.html` and the `gallery/` folder sit at the root of the upload.
+3. Open https://adlightstudio.com, then the Gallery, Pricing, About and Contact pages, and send yourself a test inquiry.
 
-1. Export the photo as WebP at two widths: 800 px and up to 1600 px, named like `wedding-01-800.webp` and `wedding-01-1600.webp`.
+Automatic (optional): Cloudflare Pages can deploy from GitHub on every push to `master`. A project made by direct upload can't be switched to Git, so this means creating a new Pages project connected to this repository (build command: none, build output directory: `site`, production branch: `master`), then moving the adlightstudio.com custom domain to it.
+
+## Add a gallery photo
+
+1. Export the photo as WebP at two sizes: about 800 px and about 1600 px on the long side, named like `wedding-day-first-look-800.webp` and `wedding-day-first-look-1600.webp`. Don't put client names in file names.
 2. Put both in `site/images/`.
-3. In `site/index.html`, replace a "Coming soon" `<button class="placeholder" ...>` with a `photo-frame` button copied from an existing photo, then update the file names, `width`/`height`, alt text and caption.
-
+3. In `site/gallery/index.html`, find the row for that session (each row is a `<section class="event-row">`). Copy one `<li class="tile">` in it, then change the file names, `width` and `height`, the alt text and `data-src`. To start a new session row, copy a whole `event-row` section and change its `id`, title, the line above the title and `data-category` (any of: portraits weddings events family maternity graduation indoor, separated by spaces).
+4. A row that has a "Photos coming soon" card: delete that `<li class="tile">` once real photos are in.
