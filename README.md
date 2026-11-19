@@ -20,6 +20,3 @@ Fallback: `single-file/index.html` is a one-file copy with every photo embedded 
 2. Put both in `site/images/`.
 3. In `site/index.html`, replace a "Coming soon" `<button class="placeholder" ...>` with a `photo-frame` button copied from an existing photo, then update the file names, `width`/`height`, alt text and caption.
 
-## Still to fill in
-
-Search `site/index.html` for `TODO (Ashim)`: the Facebook page link in the footer is commented out until it's added.
