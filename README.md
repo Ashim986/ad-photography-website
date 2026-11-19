@@ -22,4 +22,4 @@ Fallback: `single-file/index.html` is a one-file copy with every photo embedded 
 
 ## Still to fill in
 
-Search `site/index.html` for `TODO (Ashim)`: the Facebook page link, business email and phone number in the footer are commented out until they're added.
+Search `site/index.html` for `TODO (Ashim)`: the Facebook page link and phone number in the footer are commented out until they're added.
