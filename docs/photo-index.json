@@ -657,6 +657,49 @@
   {
    "page": "Gallery",
    "url": "/gallery/",
+   "section": "Graduation portraits",
+   "file": "graduate-portrait-park-seated",
+   "sizes": [
+    800,
+    1600
+   ],
+   "alt": "Graduate in a grey blazer sitting on a wooden post in a green park",
+   "drive_folder": "Website exports > Graduation portraits A",
+   "original": "_42A9045",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
+   "section": "Graduation portraits",
+   "file": "graduate-speech-microphone",
+   "sizes": [
+    800,
+    1600
+   ],
+   "alt": "Graduate smiling while giving a speech with a microphone",
+   "drive_folder": "Website exports > Graduation portraits A",
+   "original": "_MG_0005",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
+   "section": "Graduation portraits",
+   "file": "graduate-balloon-arch-guests",
+   "sizes": [
+    800,
+    1600,
+    2500
+   ],
+   "alt": "Graduate with two guests in front of a congratulations balloon arch",
+   "drive_folder": "Website exports > Graduation portraits A",
+   "original": "_R0A2372",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
    "section": "Bratabandha reception",
    "file": "bratabandha-guests-dancing",
    "sizes": [
@@ -1004,6 +1047,16 @@
    "name": "Gunyo Cholo A",
    "holds": "Gunyo Cholo reception",
    "used": "Gunyo Cholo reception row (4) and Evening celebration row (1)"
+  },
+  {
+   "name": "Graduation portraits A",
+   "holds": "Graduation portraits and party, 24 photos",
+   "used": "Graduation portraits row (3)"
+  },
+  {
+   "name": "Graduation portraits B",
+   "holds": "Empty so far",
+   "used": "None yet"
   }
  ]
 }
