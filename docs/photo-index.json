@@ -700,6 +700,35 @@
   {
    "page": "Gallery",
    "url": "/gallery/",
+   "section": "Graduation portraits",
+   "file": "graduate-cap-stage-guests",
+   "sizes": [
+    800,
+    1600,
+    2500
+   ],
+   "alt": "Graduate in cap and gown with two guests in front of a draped stage",
+   "drive_folder": "Website exports > Graduation portraits B",
+   "original": "_R0A1823",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
+   "section": "Graduation portraits",
+   "file": "graduate-stole-portrait-friend",
+   "sizes": [
+    800,
+    1600
+   ],
+   "alt": "Smiling graduate in gown and purple stole beside a friend",
+   "drive_folder": "Website exports > Graduation portraits B",
+   "original": "_MG_9761",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
    "section": "Bratabandha reception",
    "file": "bratabandha-guests-dancing",
    "sizes": [
@@ -1055,8 +1084,8 @@
   },
   {
    "name": "Graduation portraits B",
-   "holds": "Empty so far",
-   "used": "None yet"
+   "holds": "Graduation portraits and party, over 100 photos",
+   "used": "Graduation portraits row (2)"
   }
  ]
 }

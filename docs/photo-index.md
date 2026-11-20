@@ -56,6 +56,8 @@ This folder is not part of the uploaded site: only `site/` goes to Cloudflare. T
 | Gallery | Graduation portraits | `graduate-portrait-park-seated` | Website exports > Graduation portraits A | _42A9045 | 2026-11-20 | Graduate in a grey blazer sitting on a wooden post in a green park |
 | Gallery | Graduation portraits | `graduate-speech-microphone` | Website exports > Graduation portraits A | _MG_0005 | 2026-11-20 | Graduate smiling while giving a speech with a microphone |
 | Gallery | Graduation portraits | `graduate-balloon-arch-guests` | Website exports > Graduation portraits A | _R0A2372 | 2026-11-20 | Graduate with two guests in front of a congratulations balloon arch |
+| Gallery | Graduation portraits | `graduate-cap-stage-guests` | Website exports > Graduation portraits B | _R0A1823 | 2026-11-20 | Graduate in cap and gown with two guests in front of a draped stage |
+| Gallery | Graduation portraits | `graduate-stole-portrait-friend` | Website exports > Graduation portraits B | _MG_9761 | 2026-11-20 | Smiling graduate in gown and purple stole beside a friend |
 | Gallery | Bratabandha reception | `bratabandha-guests-dancing` | Website exports > Bratabandha A | 042A1531 | 2026-11-20 | Two guests dancing with a red scarf at a ballroom reception |
 | Gallery | Bratabandha reception | `bratabandha-friends-sarees` | Website exports > Bratabandha A | 042A1694 | 2026-11-20 | Two guests in silver and olive green sarees smiling at an evening reception |
 | Gallery | Bratabandha reception | `bratabandha-portrait-green-saree` | Website exports > Bratabandha A | 042A1733 | 2026-11-20 | Guest in a lime green and silver saree posing at a reception |
@@ -77,7 +79,7 @@ This folder is not part of the uploaded site: only `site/` goes to Cloudflare. T
 | Gallery | Indoor and studio sessions | `indoor-bw-beanie` | Website exports > Indoor A | _R0A1810 | 2026-11-20 | Black and white studio portrait in a knit beanie and heart sunglasses |
 | About | About | `team-ashim-sneha` | Earlier site photo (no Drive source recorded) | not recorded | 2026-11-19 | Ashim Dahal and Sneha Malla together on a beach swing |
 
-68 photos, each used once.
+70 photos, each used once.
 
 ## Website exports subfolders
 
@@ -98,7 +100,7 @@ Web-size copies (about 2500 px) live in My Drive > Website exports. Originals st
 | Bratabandha A | Bratabandha reception, 82 photos | Bratabandha reception row (5) |
 | Gunyo Cholo A | Gunyo Cholo reception | Gunyo Cholo reception row (4) and Evening celebration row (1) |
 | Graduation portraits A | Graduation portraits and party, 24 photos | Graduation portraits row (3) |
-| Graduation portraits B | Empty so far | None yet |
+| Graduation portraits B | Graduation portraits and party, over 100 photos | Graduation portraits row (2) |
 
 ## Adding a photo
 
