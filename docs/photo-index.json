@@ -561,7 +561,7 @@
     2500
    ],
    "alt": "Two guests taking a selfie at a party",
-   "drive_folder": "Gunyo Cholo A",
+   "drive_folder": "Website exports > Gunyo Cholo A",
    "original": "_S4A3287",
    "added": "2026-11-19"
   },
@@ -725,6 +725,65 @@
    "alt": "Couple at a reception, one in a royal blue saree and one in a grey suit",
    "drive_folder": "Website exports > Bratabandha A",
    "original": "_S4A4768",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
+   "section": "Gunyo Cholo reception",
+   "file": "gunyocholo-group-dance",
+   "sizes": [
+    800,
+    1600,
+    2500
+   ],
+   "alt": "Group of guests in sunglasses dancing together in front of a white floral stage",
+   "drive_folder": "Website exports > Gunyo Cholo A",
+   "original": "_MG_3965",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
+   "section": "Gunyo Cholo reception",
+   "file": "gunyocholo-friends-lehengas",
+   "sizes": [
+    800,
+    1600,
+    2500
+   ],
+   "alt": "Five guests in bright lehengas and saris smiling together at a reception",
+   "drive_folder": "Website exports > Gunyo Cholo A",
+   "original": "_S4A3170",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
+   "section": "Gunyo Cholo reception",
+   "file": "gunyocholo-couple-dance-floor",
+   "sizes": [
+    800,
+    1600,
+    1818
+   ],
+   "alt": "Smiling couple on a reception dance floor with a floral backdrop",
+   "drive_folder": "Website exports > Gunyo Cholo A",
+   "original": "_S4A3203",
+   "added": "2026-11-20"
+  },
+  {
+   "page": "Gallery",
+   "url": "/gallery/",
+   "section": "Gunyo Cholo reception",
+   "file": "gunyocholo-portrait-floral",
+   "sizes": [
+    800,
+    1600
+   ],
+   "alt": "Guest in a floral lehenga and red dupatta at an evening reception",
+   "drive_folder": "Website exports > Gunyo Cholo A",
+   "original": "_S4A3175",
    "added": "2026-11-20"
   },
   {
@@ -940,6 +999,11 @@
    "name": "Bratabandha A",
    "holds": "Bratabandha reception, 82 photos",
    "used": "Bratabandha reception row (5)"
+  },
+  {
+   "name": "Gunyo Cholo A",
+   "holds": "Gunyo Cholo reception",
+   "used": "Gunyo Cholo reception row (4) and Evening celebration row (1)"
   }
  ]
 }

@@ -46,7 +46,7 @@ This folder is not part of the uploaded site: only `site/` goes to Cloudflare. T
 | Gallery | Baby and family portraits | `family-girl-white-dress-grass` | Earlier site photo (no Drive source recorded) | not recorded | 2026-11-19 | Little girl in a white dress sitting on the grass |
 | Gallery | Baby and family portraits | `family-girl-forest-road` | Earlier site photo (no Drive source recorded) | not recorded | 2026-11-19 | Little girl in a white dress on a forest road |
 | Gallery | Evening celebration | `celebration-friends-lounge` | Celebration A | _42A8851 | 2026-11-19 | Two friends smiling at an evening celebration |
-| Gallery | Evening celebration | `celebration-selfie-candid` | Gunyo Cholo A | _S4A3287 | 2026-11-19 | Two guests taking a selfie at a party |
+| Gallery | Evening celebration | `celebration-selfie-candid` | Website exports > Gunyo Cholo A | _S4A3287 | 2026-11-19 | Two guests taking a selfie at a party |
 | Gallery | Evening celebration | `celebration-portrait-bar` | Celebration A | _42A8871 | 2026-11-19 | Relaxed evening portrait in a white printed shirt |
 | Gallery | Graduation party | `graduation-party-group-photo` | Website exports > Graduation party A | 7R0A7039-2 | 2026-11-20 | Large group of guests posing together at a backyard graduation party |
 | Gallery | Graduation party | `graduation-party-friends-backyard` | Website exports > Graduation party A | 7R0A6777-2 | 2026-11-20 | Three friends in sunglasses smiling at a backyard graduation party |
@@ -58,6 +58,10 @@ This folder is not part of the uploaded site: only `site/` goes to Cloudflare. T
 | Gallery | Bratabandha reception | `bratabandha-portrait-green-saree` | Website exports > Bratabandha A | 042A1733 | 2026-11-20 | Guest in a lime green and silver saree posing at a reception |
 | Gallery | Bratabandha reception | `bratabandha-guests-candid` | Website exports > Bratabandha A | _S4A4751 | 2026-11-20 | Four friends smiling together at a crowded reception |
 | Gallery | Bratabandha reception | `bratabandha-couple-blue-saree` | Website exports > Bratabandha A | _S4A4768 | 2026-11-20 | Couple at a reception, one in a royal blue saree and one in a grey suit |
+| Gallery | Gunyo Cholo reception | `gunyocholo-group-dance` | Website exports > Gunyo Cholo A | _MG_3965 | 2026-11-20 | Group of guests in sunglasses dancing together in front of a white floral stage |
+| Gallery | Gunyo Cholo reception | `gunyocholo-friends-lehengas` | Website exports > Gunyo Cholo A | _S4A3170 | 2026-11-20 | Five guests in bright lehengas and saris smiling together at a reception |
+| Gallery | Gunyo Cholo reception | `gunyocholo-couple-dance-floor` | Website exports > Gunyo Cholo A | _S4A3203 | 2026-11-20 | Smiling couple on a reception dance floor with a floral backdrop |
+| Gallery | Gunyo Cholo reception | `gunyocholo-portrait-floral` | Website exports > Gunyo Cholo A | _S4A3175 | 2026-11-20 | Guest in a floral lehenga and red dupatta at an evening reception |
 | Gallery | Rice-feeding ceremony | `ricefeeding-father-and-baby` | Rice-feeding A | _42A6595 | 2026-11-19 | Father holding his baby, both in traditional dress |
 | Gallery | Rice-feeding ceremony | `ricefeeding-baby-topi-portrait` | Website exports > Rice-feeding A | _42A6686 | 2026-11-19 | Baby in a patterned topi and light blue outfit sitting on a gold and white sofa |
 | Gallery | Rice-feeding ceremony | `ricefeeding-baby-on-red-mat` | Website exports > Rice-feeding A | _42A7230 | 2026-11-19 | Baby in white and gold lying on a red velvet mat at the ceremony |
@@ -70,7 +74,7 @@ This folder is not part of the uploaded site: only `site/` goes to Cloudflare. T
 | Gallery | Indoor and studio sessions | `indoor-bw-beanie` | Website exports > Indoor A | _R0A1810 | 2026-11-20 | Black and white studio portrait in a knit beanie and heart sunglasses |
 | About | About | `team-ashim-sneha` | Earlier site photo (no Drive source recorded) | not recorded | 2026-11-19 | Ashim Dahal and Sneha Malla together on a beach swing |
 
-61 photos, each used once.
+65 photos, each used once.
 
 ## Website exports subfolders
 
@@ -89,6 +93,7 @@ Web-size copies (about 2500 px) live in My Drive > Website exports. Originals st
 | Indoor A | Indoor studio portraits | Indoor row (5) |
 | Graduation party A | Backyard graduation party | Graduation party row (3) |
 | Bratabandha A | Bratabandha reception, 82 photos | Bratabandha reception row (5) |
+| Gunyo Cholo A | Gunyo Cholo reception | Gunyo Cholo reception row (4) and Evening celebration row (1) |
 
 ## Adding a photo
 
