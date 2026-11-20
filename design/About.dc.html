@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="container-type: inline-size; width: 100%; background: #F6F2EC; color: #1D1B18; font-family: 'Albert Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+
+<dc-import name="Nav" mobile="{{isMobile}}" active="about" hint-size="100%,80px"></dc-import>
+
+<section aria-labelledby="about-title" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6cqw, 88px) clamp(20px, 4cqw, 40px); display: flex; flex-wrap: wrap; align-items: center; gap: 32px clamp(40px, 6cqw, 96px);">
+<div style="flex: 1 1 380px;">
+<p style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #8E4A2B;">Meet your photographer and editor</p>
+<h1 id="about-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(46px, 6cqw, 88px); line-height: .95; letter-spacing: -.01em;">Two perspectives, one thoughtful finish.</h1>
+<p style="margin: 24px 0 0; color: #5E5850; font-size: 18px;">Ashim brings a calm, observant presence to every session, creating photographs that feel natural and true to the moment. Sneha shapes the final edit with care, bringing consistency, warmth and polish to the complete story.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px 40px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #D9CFC2;">
+<div><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px;">Ashim Dahal</p><p style="margin: 0; font-size: 14px; color: #5E5850;">Photographer</p></div>
+<div><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 28px;">Sneha Malla</p><p style="margin: 0; font-size: 14px; color: #5E5850;">Editor</p></div>
+</div>
+</div>
+<img src="/_blob/94589e3bffb73e80c946441f7c0bdca2" alt="Ashim Dahal and Sneha Malla together on a beach swing" style="flex: 1 1 320px; min-width: 0; max-width: 520px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 24px;">
+</section>
+
+<section aria-labelledby="services-title" style="background: #EFE9E1;">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 6cqw, 96px) clamp(20px, 4cqw, 40px); display: flex; flex-wrap: wrap; gap: 32px clamp(40px, 6cqw, 96px);">
+<div style="flex: 1 1 320px;">
+<img src="/_blob/ee725b7e015129cd5c397e3ab6f349b9" alt="Photographer holding his camera" style="width: 100%; max-width: 420px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 24px; display: block;">
+</div>
+<div style="flex: 1.4 1 420px;">
+<h2 id="services-title" style="margin: 0 0 12px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.4cqw, 60px); line-height: 1;">Every chapter deserves its own frame.</h2>
+<p style="margin: 0 0 24px; color: #5E5850;">Coverage is shaped around the occasion, from quiet portraits to full rooms and once-in-a-lifetime milestones.</p>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #D9CFC2;">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="7">
+<li style="display: flex; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid #D9CFC2;">
+<span style="flex: none; width: 28px; font-size: 13px; font-weight: 600; color: #5E5850;">{{s.num}}</span>
+<div><p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; line-height: 1.1;">{{s.name}}</p><p style="margin: 4px 0 0; font-size: 15px; color: #5E5850;">{{s.desc}}</p></div>
+</li>
+</sc-for>
+</ul>
+<p style="margin: 24px 0 0; color: #5E5850;">Based in Kent, WA · Serving Kent, Seattle and nearby</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="cta-title" style="background: #1D1B18; color: #F6F2EC;">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 6cqw, 88px) clamp(20px, 4cqw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px;">
+<div style="flex: 1 1 420px;">
+<h2 id="cta-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.4cqw, 60px); line-height: 1;">Tell me what you’re planning.</h2>
+<p style="margin: 14px 0 0; color: #D9D0C4;">Share the date, place and a few details.</p>
+</div>
+<a href="{{bookHref}}" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: 999px; background: #F6F2EC; color: #1D1B18; text-decoration: none; font-weight: 600;">Request a date</a>
+</div>
+</section>
+
+<dc-import name="Footer" mobile="{{isMobile}}" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mobile":{"editor":null,"tsType":"boolean"},"$preview":{"width":1440,"height":2700}}'>
+class Component extends DCLogic {
+renderVals() {
+const m = this.props.mobile === true;
+return {
+isMobile: m,
+bookHref: (m ? 'MobileBook' : 'Book') + '.dc.html',
+services: [
+{ num: '01', name: 'Portraits', desc: 'Personal, professional and creative portraits with calm direction and space to feel natural.' },
+{ num: '02', name: 'Weddings', desc: 'The ceremony, the people and the in-between moments that make the day distinctly yours.' },
+{ num: '03', name: 'Events', desc: 'Atmosphere, details and candid connection for private celebrations and community gatherings.' },
+{ num: '04', name: 'Family', desc: 'Relaxed sessions centered on personality, closeness and the way your family moves together.' },
+{ num: '05', name: 'Maternity', desc: 'Thoughtful, comfortable portraits that celebrate anticipation, connection and this meaningful season.' },
+{ num: '06', name: 'Graduation', desc: 'A confident record of the work, joy and people behind a major milestone.' },
+{ num: '07', name: 'Indoor', desc: 'Intentional light and composition for celebrations, portraits and stories made indoors.' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

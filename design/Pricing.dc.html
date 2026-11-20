@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pricing</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="container-type: inline-size; width: 100%; background: #F6F2EC; color: #1D1B18; font-family: 'Albert Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+
+<dc-import name="Nav" mobile="{{isMobile}}" active="pricing" hint-size="100%,80px"></dc-import>
+
+<section aria-labelledby="pricing-title" style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6cqw, 88px) clamp(20px, 4cqw, 40px) clamp(56px, 6cqw, 96px);">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; margin-bottom: 48px;">
+<div style="flex: 1 1 420px;">
+<p style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #8E4A2B;">Pricing</p>
+<h1 id="pricing-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(48px, 6.4cqw, 92px); line-height: .95; letter-spacing: -.01em;">Pricing</h1>
+</div>
+<p style="flex: 1 1 320px; max-width: 420px; margin: 0; color: #5E5850;">Prices are shown as ranges. Your final quote depends on session length, location and travel, and what’s included.</p>
+</div>
+
+<h2 style="margin: 0 0 16px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #5E5850;">Sessions</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 48px;">
+<sc-for list="{{sessions}}" as="r" hint-placeholder-count="5">
+<article style="display: flex; flex-direction: column; gap: 6px; padding: 24px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2DAD0;">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 30px; line-height: 1.1;">{{r.name}}</h3>
+<p style="margin: 0; flex-grow: 1; font-size: 22px; font-weight: 500;">{{r.price}}</p>
+<a href="{{bookHref}}" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 600; color: #8E4A2B;">Request a date</a>
+</article>
+</sc-for>
+</div>
+
+<h2 style="margin: 0 0 16px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #5E5850;">Weddings · $1,500 to $3,900</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 12px;">
+<article style="padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2DAD0;">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px;">Intimate</h3>
+<p style="margin: 8px 0 0; font-size: 36px; font-weight: 500;">$1,500</p>
+<p style="margin: 8px 0 0; color: #5E5850;">For small weddings</p>
+</article>
+<article style="padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2DAD0;">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px;">Classic</h3>
+<p style="margin: 8px 0 0; font-size: 36px; font-weight: 500;">$3,200</p>
+</article>
+<article style="padding: 28px; border-radius: 20px; background: #1D1B18; color: #F6F2EC;">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px;">Signature</h3>
+<p style="margin: 8px 0 0; font-size: 36px; font-weight: 500;">$3,900</p>
+<p style="margin: 8px 0 0; color: #D9D0C4;">The 30 to 60 minute travel fee is waived</p>
+</article>
+</div>
+<p style="margin: 0 0 48px; color: #5E5850;">Extra wedding coverage: $250 per hour.</p>
+
+<h2 style="margin: 0 0 16px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #5E5850;">Events · $500 to $750</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 48px;">
+<article style="padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2DAD0;">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px;">3 to 4 hours</h3>
+<p style="margin: 8px 0 0; font-size: 36px; font-weight: 500;">$500</p>
+</article>
+<article style="padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2DAD0;">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px;">Up to 6 hours</h3>
+<p style="margin: 8px 0 0; font-size: 36px; font-weight: 500;">$750</p>
+</article>
+<article style="padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2DAD0;">
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 32px;">Extra time</h3>
+<p style="margin: 8px 0 0; font-size: 36px; font-weight: 500;">$100 <span style="font-size: 18px; color: #5E5850;">per hour</span></p>
+</article>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+<div style="padding: 24px 28px; border-radius: 20px; background: #EFE9E1;">
+<h2 style="margin: 0 0 8px; font-size: 16px; font-weight: 600;">Every package includes</h2>
+<p style="margin: 0; color: #5E5850;">A private online gallery with high resolution downloads.</p>
+</div>
+<div style="padding: 24px 28px; border-radius: 20px; background: #EFE9E1;">
+<h2 style="margin: 0 0 8px; font-size: 16px; font-weight: 600;">Booking</h2>
+<p style="margin: 0; color: #5E5850;">A retainer books your date. The balance is due on session day. Washington sales tax applies.</p>
+</div>
+<div style="padding: 24px 28px; border-radius: 20px; background: #EFE9E1;">
+<h2 style="margin: 0 0 8px; font-size: 16px; font-weight: 600;">Travel</h2>
+<ul style="margin: 0; padding-left: 18px; color: #5E5850;">
+<li>Up to about 30 minutes from Kent: included</li>
+<li>30 to 60 minutes: flat $50, waived on Signature</li>
+<li>Over an hour: flat $100, Signature level minimum</li>
+<li>Far weddings and full day events: quoted case by case</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="cta-title" style="background: #1D1B18; color: #F6F2EC;">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 6cqw, 88px) clamp(20px, 4cqw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px;">
+<div style="flex: 1 1 420px;">
+<h2 id="cta-title" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.4cqw, 60px); line-height: 1;">Tell me what you’re planning.</h2>
+<p style="margin: 14px 0 0; color: #D9D0C4;">Share the date, place and a few details.</p>
+</div>
+<a href="{{bookHref}}" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: 999px; background: #F6F2EC; color: #1D1B18; text-decoration: none; font-weight: 600;">Request a date</a>
+</div>
+</section>
+
+<dc-import name="Footer" mobile="{{isMobile}}" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mobile":{"editor":null,"tsType":"boolean"},"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+renderVals() {
+const m = this.props.mobile === true;
+return {
+isMobile: m,
+bookHref: (m ? 'MobileBook' : 'Book') + '.dc.html',
+sessions: [
+{ name: 'Portraits', price: '$200 to $350' },
+{ name: 'Family', price: '$275 to $350' },
+{ name: 'Maternity', price: '$250 to $375' },
+{ name: 'Graduation', price: '$175 to $325' },
+{ name: 'Indoor and studio', price: '$200 to $350' }
+]
+};
+}
+}
+</script>
+</body>
+</html>
