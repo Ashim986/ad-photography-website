@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Client reviews | AD Photography, Kent and Seattle, WA</title>
+  <meta name="description" content="What clients say about their wedding, maternity, baby shower and family sessions with AD Photography in Kent and Seattle, WA, and a place to rate your own session.">
+  <link rel="canonical" href="https://adlightstudio.com/reviews/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#f6f2ec">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AD Photography">
+  <meta property="og:title" content="Client reviews | AD Photography">
+  <meta property="og:description" content="What clients say about their wedding, maternity, baby shower and family sessions with AD Photography in Kent and Seattle, WA, and a place to rate your own session.">
+  <meta property="og:url" content="https://adlightstudio.com/reviews/">
+  <meta property="og:image" content="https://adlightstudio.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AD Photography logo over the Seattle Great Wheel">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/"><span class="brand-name">AD Photography</span><span class="brand-place">Kent · Seattle, WA</span></a>
+      <div class="nav-right">
+        <a class="btn btn-accent nav-book" href="/contact/"><span class="long">Book a session</span><span class="short">Book</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+      <ul class="nav-links" id="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/gallery/">Gallery</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="wrap page-top section" aria-labelledby="reviews-title">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Kind words</p>
+          <h1 class="display" id="reviews-title">What clients say.</h1>
+        </div>
+        <p>Every review here was written by a client after their session. We share them with permission.</p>
+      </div>
+      <!-- Filled from /assets/reviews.json. Stays hidden while that list is empty. -->
+      <ul class="review-grid" id="review-list" hidden></ul>
+      <p class="review-empty" id="review-empty">We’re gathering reviews from recent clients, and they’ll appear here soon. Until then, the <a href="/gallery/">gallery</a> shows our work best.</p>
+      <div class="review-google" id="review-google" hidden>
+        <a class="btn btn-outline" id="google-read" href="#" rel="noopener" hidden>Read our Google reviews</a>
+      </div>
+    </section>
+
+    <section class="bg-sand" aria-labelledby="feedback-title">
+      <div class="wrap section">
+        <div class="contact-layout">
+          <div class="contact-intro">
+            <p class="kicker">For our clients</p>
+            <h2 class="title" id="feedback-title">How was your session?</h2>
+            <p class="lede" style="margin: 24px 0 32px;">Your rating and a few words help us get better, and help the next family decide. It goes straight to Ashim and Sneha.</p>
+            <div class="note-box">
+              <strong>What happens next</strong>
+              <p>Nothing is posted on its own. If you say it’s okay, we may show your first name, your rating and your words on this site.</p>
+            </div>
+          </div>
+
+          <form class="inquiry" id="feedback-form" novalidate>
+            <fieldset class="field full star-field" aria-describedby="rating-error">
+              <legend>Your rating *</legend>
+              <div class="star-input">
+                <input type="radio" id="rating-1" name="rating" value="1"><label for="rating-1" title="1 star"><span class="visually-hidden">1 star</span></label>
+                <input type="radio" id="rating-2" name="rating" value="2"><label for="rating-2" title="2 stars"><span class="visually-hidden">2 stars</span></label>
+                <input type="radio" id="rating-3" name="rating" value="3"><label for="rating-3" title="3 stars"><span class="visually-hidden">3 stars</span></label>
+                <input type="radio" id="rating-4" name="rating" value="4"><label for="rating-4" title="4 stars"><span class="visually-hidden">4 stars</span></label>
+                <input type="radio" id="rating-5" name="rating" value="5"><label for="rating-5" title="5 stars"><span class="visually-hidden">5 stars</span></label>
+              </div>
+              <p class="field-error" id="rating-error" aria-live="polite"></p>
+            </fieldset>
+            <div class="field">
+              <label for="fb-name">Your name *</label>
+              <input id="fb-name" name="name" autocomplete="name" aria-describedby="fb-name-error" required>
+              <p class="field-error" id="fb-name-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="fb-session">Your session</label>
+              <select id="fb-session" name="session">
+                <option value="">Choose one</option>
+                <option>Wedding</option>
+                <option>Maternity</option>
+                <option>Baby shower</option>
+                <option>Family</option>
+                <option>Portraits</option>
+                <option>Event</option>
+                <option>Graduation</option>
+                <option>Indoor session</option>
+                <option>Rice-feeding ceremony</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="fb-email">Email (only if you’d like a reply)</label>
+              <input id="fb-email" name="email" type="email" autocomplete="email" aria-describedby="fb-email-error">
+              <p class="field-error" id="fb-email-error" aria-live="polite"></p>
+            </div>
+            <!-- Spam trap: hidden from people. Bots tick it, and the form then sends nothing. -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="fb-botcheck">Leave this box unchecked</label>
+              <input type="checkbox" id="fb-botcheck" name="botcheck" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field full">
+              <label for="fb-text">Tell us about it *</label>
+              <textarea id="fb-text" name="review" maxlength="1200" aria-describedby="fb-text-error" placeholder="What you enjoyed, how the photos felt, anything we could do better" required></textarea>
+              <p class="field-error" id="fb-text-error" aria-live="polite"></p>
+            </div>
+            <label class="check full">
+              <input type="checkbox" id="fb-consent" name="ok_to_show" value="Yes">
+              <span>You may show my first name, rating and words on adlightstudio.com.</span>
+            </label>
+            <div class="form-actions">
+              <button class="btn btn-accent" id="fb-submit" type="submit">Send my review</button>
+              <p class="form-note">Sent privately to AD Photography.</p>
+            </div>
+            <div class="result" id="fb-result" role="status" aria-live="polite" tabindex="-1">
+              <p id="fb-result-message"></p>
+              <p class="result-google" id="fb-google" hidden>If you have a minute, you can also share it on Google, where other families look. <a href="#" id="fb-google-link" rel="noopener">Review us on Google</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="/images/logo-white.png" width="334" height="96" alt="AD Photography" loading="lazy">
+        <p class="footer-quote">Your people. Your season. Remembered with intention.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/gallery/">Gallery</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/reviews/">Client reviews</a></li>
+          <li><a href="/contact/">Contact and booking</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:adphotograph26@gmail.com">adphotograph26@gmail.com</a></li>
+          <li><a href="tel:+12242292201">224-229-2201</a></li>
+          <li><a href="https://www.instagram.com/ashimd_photography/" rel="noopener">Instagram @ashimd_photography</a></li>
+          <li><a href="https://www.facebook.com/ad.photopraphy" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>Based in Kent, WA · Serving Kent, Seattle and nearby</span>
+      <span>Portraits · Weddings · Events · Family · Maternity · Graduation · Indoor</span>
+      <span>© <span id="year">2026</span> AD Photography</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -185,6 +185,202 @@
     }, { passive: true });
   }
 
+  // Client reviews. Approved reviews live in /assets/reviews.json; nothing shows while its list is empty.
+  var homeReviews = document.getElementById('home-reviews');
+  var reviewList = document.getElementById('review-list');
+  var feedbackGoogle = document.getElementById('fb-google-link');
+  var googleReviewLink = '';
+
+  function safeLink(url) {
+    return /^https:\/\/[^\s"<>]+$/.test(url || '') ? url : '';
+  }
+
+  function starsSvg(rating) {
+    var wrap = document.createElement('div');
+    wrap.className = 'review-stars';
+    wrap.setAttribute('role', 'img');
+    wrap.setAttribute('aria-label', rating + ' out of 5 stars');
+    for (var i = 1; i <= 5; i++) {
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('aria-hidden', 'true');
+      if (i > rating) svg.setAttribute('class', 'off');
+      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3-4.7-4.4 6.4-.8z');
+      path.setAttribute('fill', 'currentColor');
+      svg.appendChild(path);
+      wrap.appendChild(svg);
+    }
+    return wrap;
+  }
+
+  function formatMonth(value) {
+    var match = /^(\d{4})-(\d{2})$/.exec(value || '');
+    if (!match) return '';
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return months[Number(match[2]) - 1] + ' ' + match[1];
+  }
+
+  function reviewCard(review) {
+    var item = document.createElement('li');
+    item.className = 'review-card';
+    item.appendChild(starsSvg(Number(review.rating)));
+    var text = document.createElement('p');
+    text.className = 'review-text';
+    text.textContent = review.text;
+    item.appendChild(text);
+    var who = document.createElement('p');
+    who.className = 'review-who';
+    var name = document.createElement('strong');
+    name.textContent = review.name;
+    who.appendChild(name);
+    var details = [review.session, formatMonth(review.date)].filter(Boolean).join(', ');
+    if (details) who.appendChild(document.createTextNode(' · ' + details));
+    item.appendChild(who);
+    if (review.source === 'google') {
+      var source = document.createElement('p');
+      source.className = 'review-source';
+      source.textContent = 'Posted on Google';
+      item.appendChild(source);
+    }
+    return item;
+  }
+
+  if (homeReviews || reviewList || feedbackGoogle) {
+    fetch('/assets/reviews.json', { cache: 'no-cache' }).then(function (response) {
+      return response.ok ? response.json() : null;
+    }).then(function (data) {
+      if (!data) return;
+      var reviews = (data.reviews || []).filter(function (review) {
+        return review && review.name && review.text && [1, 2, 3, 4, 5].indexOf(Number(review.rating)) !== -1;
+      });
+      googleReviewLink = safeLink(data.googleReviewLink);
+      var listingLink = safeLink(data.googleListingLink);
+
+      if (homeReviews && reviews.length) {
+        var featured = reviews.filter(function (review) { return review.featured; });
+        (featured.length ? featured : reviews).slice(0, 3).forEach(function (review) {
+          document.getElementById('home-review-list').appendChild(reviewCard(review));
+        });
+        homeReviews.hidden = false;
+      }
+
+      if (reviewList) {
+        reviews.forEach(function (review) { reviewList.appendChild(reviewCard(review)); });
+        reviewList.hidden = !reviews.length;
+        document.getElementById('review-empty').hidden = !!reviews.length;
+        var readLink = document.getElementById('google-read');
+        if (listingLink) {
+          readLink.href = listingLink;
+          readLink.hidden = false;
+          document.getElementById('review-google').hidden = false;
+        }
+      }
+      if (feedbackGoogle && googleReviewLink) feedbackGoogle.href = googleReviewLink;
+    }).catch(function () { /* Reviews are extra; the page works without them. */ });
+  }
+
+  // Client feedback form on /reviews/. Sent by email through Web3Forms, like booking inquiries.
+  var feedbackForm = document.getElementById('feedback-form');
+  if (feedbackForm) {
+    var fbResult = document.getElementById('fb-result');
+    var fbMessage = document.getElementById('fb-result-message');
+    var fbGoogle = document.getElementById('fb-google');
+    var fbSubmit = document.getElementById('fb-submit');
+    var ratingField = feedbackForm.querySelector('.star-field');
+    var fbFields = {
+      'fb-name': document.getElementById('fb-name'),
+      'fb-email': document.getElementById('fb-email'),
+      'fb-text': document.getElementById('fb-text')
+    };
+
+    var fbError = function (id, message) {
+      var errorEl = document.getElementById(id === 'rating' ? 'rating-error' : id + '-error');
+      if (id === 'rating') ratingField.setAttribute('aria-invalid', message ? 'true' : 'false');
+      else fbFields[id].setAttribute('aria-invalid', message ? 'true' : 'false');
+      errorEl.textContent = message;
+      return !message;
+    };
+
+    var fbCheck = function () {
+      var ok = true;
+      var rating = feedbackForm.querySelector('input[name="rating"]:checked');
+      ok = fbError('rating', rating ? '' : 'Choose 1 to 5 stars.') && ok;
+      var name = fbFields['fb-name'].value.trim();
+      ok = fbError('fb-name', name.length >= 2 && /^[\p{L}]+\.?(?:[ '’.-]+[\p{L}]+\.?)*$/u.test(name) ? '' : 'Enter your name using letters, spaces, hyphens, periods or apostrophes.') && ok;
+      var email = fbFields['fb-email'];
+      ok = fbError('fb-email', email.value.trim() && email.validity.typeMismatch ? 'Enter a valid email address, or leave it empty.' : '') && ok;
+      ok = fbError('fb-text', fbFields['fb-text'].value.trim().length >= 10 ? '' : 'Write at least a sentence about your session.') && ok;
+      return ok;
+    };
+
+    feedbackForm.addEventListener('change', function (event) {
+      if (event.target.name === 'rating') fbError('rating', '');
+    });
+    Object.keys(fbFields).forEach(function (id) {
+      fbFields[id].addEventListener('input', function () { fbError(id, ''); });
+    });
+
+    feedbackForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      fbResult.className = 'result';
+      fbMessage.textContent = '';
+      fbGoogle.hidden = true;
+      if (!fbCheck()) {
+        var firstBad = feedbackForm.querySelector('[aria-invalid="true"]');
+        if (firstBad === ratingField) firstBad = document.getElementById('rating-1');
+        if (firstBad) firstBad.focus();
+        return;
+      }
+
+      var data = new FormData(feedbackForm);
+      var firstName = String(data.get('name')).trim().split(/\s+/)[0];
+      var thanksText = 'Thank you, ' + firstName + '. Your review has reached us, and it means a lot.';
+      var showThanks = function () {
+        feedbackForm.reset();
+        fbResult.className = 'result is-visible is-success';
+        fbMessage.textContent = thanksText;
+        // Offered to everyone, whatever the rating: Google does not allow asking only happy clients.
+        fbGoogle.hidden = !googleReviewLink;
+        fbResult.focus();
+      };
+      if (data.get('botcheck')) { showThanks(); return; }
+
+      var stars = Number(data.get('rating'));
+      var payload = {
+        access_key: 'c3856210-3ed1-4ade-b85e-760f4983ca19',
+        subject: 'New client review: ' + stars + ' of 5 stars from ' + String(data.get('name')).trim(),
+        from_name: 'AD Photography website',
+        rating: '★★★★★'.slice(0, stars) + '☆☆☆☆☆'.slice(0, 5 - stars) + ' (' + stars + ' of 5)',
+        name: String(data.get('name')).trim(),
+        session: data.get('session') || 'Not given',
+        review: String(data.get('review')).trim(),
+        ok_to_show_on_website: data.get('ok_to_show') ? 'Yes' : 'No'
+      };
+      var email = String(data.get('email') || '').trim();
+      if (email) payload.email = email;
+
+      fbSubmit.disabled = true;
+      fbSubmit.textContent = 'Sending…';
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (response) {
+        return response.json().then(function (body) {
+          if (!response.ok || body.success === false) throw new Error('Submission failed');
+        });
+      }).then(showThanks).catch(function () {
+        fbResult.className = 'result is-visible is-error';
+        fbMessage.textContent = 'Your review could not be sent. Please check your connection and try again. Your words are still here.';
+        fbResult.focus();
+      }).finally(function () {
+        fbSubmit.disabled = false;
+        fbSubmit.textContent = 'Send my review';
+      });
+    });
+  }
+
   // Inquiry form
   var form = document.getElementById('inquiry-form');
   if (!form) return;
